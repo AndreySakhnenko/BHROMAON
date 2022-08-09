@@ -1,0 +1,651 @@
+@use "color" as *;
+// @use 'font-mixin' as *;
+@import "nullstyle.scss";
+//@import "burger";
+$desctop: 992px;
+$tablet: 767px;
+$mobile: 568px;
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Josefin Sans", "Aleo", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+label {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  @media screen and (max-width: $tablet) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+input[type="text"] {
+  font-family: "Josefin Sans";
+  padding: 19px 113px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  letter-spacing: 2.8px;
+  color: $hex-gray;
+  box-sizing: border-box;
+  max-width: 503px;
+  width: 100%;
+  cursor: pointer;
+  &:focus {
+    border: 1px solid $blue;
+    box-sizing: border-box;
+    outline: none;
+  }
+  @media screen and (max-width: $tablet) {
+    margin-bottom: 10px;
+  }
+}
+.container {
+  max-width: 1173px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+.btn {
+  width: fit-content;
+  background: linear-gradient(45deg, $hex-blue 38%, $blue 38%);
+  padding: 16px 40px;
+  font-family: "Aleo";
+  @include font-text;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: $white;
+  transition:  1s ease-in;
+  cursor: pointer;
+  &:hover {
+    background: none;
+    background-color: gold;
+    color: $blue;
+  }
+  @media screen and (max-width: $tablet) {
+    margin: 0 auto;
+  }
+}
+
+//header
+.header {
+  background-image: url(../image/header/header.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  &_container {
+    padding-top: 273px;
+  }
+  &_head {
+    margin-bottom: 132px;
+    text-align: center;
+  }
+  &_title {
+    font-family: "Josefin Sans";
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 0.5;
+    color: $white;
+    letter-spacing: 4.8px;
+    text-transform: uppercase;
+    margin-bottom: 11px;
+  }
+  &_subtitle {
+    font-family: "Josefin Sans";
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.18;
+    color: $white;
+    letter-spacing: 6.82px;
+    margin-bottom: 48px;
+  }
+  &_search {
+    margin-bottom: 107px;
+    &__text {
+      &:hover {
+        color: #179bff;
+      }
+    }
+    &__btn {
+      display: flex;
+      max-width: 153px;
+      width: 100%;
+      justify-content: center;
+      font-family: "Aleo";
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 26px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: $white;
+      background: $blue;
+      border: 2px solid $white;
+      padding: 17px 23px;
+      gap: 5px;
+      cursor: pointer;
+    }
+  }
+  &_scroll {
+    &__link {
+      display: flex;
+      flex-direction: column;
+      font-family: "Josefin Sans";
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 26px;
+      letter-spacing: 2.8px;
+      color: $white;
+      cursor: pointer;
+    }
+    &__icon {
+      animation: move-wheel 1s linear infinite;
+    }
+  }
+
+  //nav
+  &_bot {
+    background-color: $blue;
+  }
+  &_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 30px;
+    &__logo {
+      max-width: 186px;
+      width: 100%;
+      display: inline-block;
+      cursor: pointer;
+      & > img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &__list {
+      display: flex;
+      gap: 20px;
+
+      @media screen and (max-width: $desctop) {
+        gap: 12px;
+      }
+      @media screen and (max-width: $tablet) {
+        display: none;
+        gap: 0;
+      }
+    }
+    &__link {
+      font-family: "Aleo";
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 26px;
+      text-transform: uppercase;
+      color: $white;
+      padding: 0 5px;
+    }
+  }
+}
+@keyframes move-wheel {
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(1rem);
+  }
+}
+.header_nav__list {
+  overflow: hidden;
+  position: relative;
+}
+.header_nav__list {
+  display: none;
+  padding: 18px 30px;
+}
+
+.header_nav__item {
+  list-style-type: none;
+  text-align: center;
+}
+.header_nav__link {
+  color: $white;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 1s ease-in-out;
+  &:hover {
+    color: gold;
+  }
+}
+
+.hamburger-icon {
+  max-width: 25px;
+  cursor: pointer;
+  font-size: 40px;
+  color: $white;
+  display: flex;
+  justify-content: end;
+  order: 1;
+  padding: 0 10px;
+}
+#menu-toggle {
+  display: none;
+}
+
+#menu-toggle:checked + .header_nav__list {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #232323;
+  z-index: 2;
+  opacity: 0.8;
+  width: 100%;
+}
+@media screen and (min-width: $tablet) {
+  .header_nav {
+    height: 70px;
+    display: flex;
+    align-items: center;
+  }
+  .header_nav__list {
+    display: flex;
+    padding: 0;
+  }
+  .hamburger-icon {
+    display: none;
+  }
+  #menu-toggle:checked + .header_nav__list {
+    display: flex;
+  }
+}
+
+//main
+//hero
+.hero {
+  background-image: url(../image/hero/hero.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  &_container {
+    padding-top: 118px;
+    padding-bottom: 117px;
+    display: flex;
+    @media screen and (max-width: $tablet) {
+      flex-direction: column-reverse;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+  }
+  &_left {
+    width: 50%;
+    padding-top: 93px;
+    padding-left: 25px;
+    @media screen and (max-width: $desctop) {
+      margin: 0 auto;
+      padding: 20px 15px 0;
+    }
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+    }
+  }
+  &_title {
+    font-family: "Aleo";
+    @include font-title;
+    color: $white;
+    margin-bottom: 50px;
+    @media screen and (max-width: $tablet) {
+      text-align: center;
+    }
+  }
+  &_text {
+    font-family: "Josefin Sans";
+    @include font-text;
+    letter-spacing: 1.6px;
+    color: $gray;
+  }
+  &_first__text {
+    margin-bottom: 20px;
+  }
+  &_second__text {
+    margin-bottom: 45px;
+  }
+  &_right {
+    width: 50%;
+    padding-left: 110px;
+    gap: 10px;
+    @media screen and (max-width: $desctop) {
+      padding: 93px 15px 0;
+    }
+    @media screen and (max-width: $tablet) {
+      margin: 0 auto;
+      padding: 15px;
+      display: flex;
+      overflow: auto;
+      scroll-snap-type: x mandatory;
+      width: 100%;
+    }
+    &__top {
+      @media screen and (max-width: $tablet) {
+        margin-bottom: 10px;
+        min-width: 110%;
+        scroll-snap-align: start;
+      }
+      & > img {
+        @media screen and (max-width: $desctop) {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    &__bot {
+      padding-left: 90px;
+      @media screen and (max-width: $desctop) {
+        padding: 0;
+      }
+      @media screen and (max-width: $tablet) {
+        min-width: 110%;
+        scroll-snap-align: start;
+      }
+      & > img {
+        @media screen and (max-width: $desctop) {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+//search
+.search {
+  background-color: $black;
+  &_container {
+    padding-top: 46px;
+    padding-bottom: 116px;
+    @media screen and (max-width: $tablet) {
+      padding-bottom: 50px;
+    }
+  }
+  &_shaper {
+    display: flex;
+    max-width: 690px;
+    margin: 0 auto;
+    @media screen and (max-width: $desctop) {
+      max-width: 560px;
+    }
+    @media screen and (max-width: $tablet) {
+      display: none;
+    }
+  }
+  &_block {
+    display: flex;
+    justify-content: space-around;
+  }
+  &_icon {
+    color: $blue;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    @media screen and (max-width: $desctop) {
+      flex-direction: column;
+    }
+  }
+
+  &_circle {
+    color: $red;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    @media screen and (max-width: $desctop) {
+      flex-direction: column;
+    }
+  }
+  &_up {
+    color: $aqua;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    @media screen and (max-width: $desctop) {
+      flex-direction: column;
+    }
+  }
+  &_span__icon {
+    font-size: 60px;
+    padding: 5px;
+    &:hover {
+      animation: first_color 0.5s ease-in-out infinite alternate;
+    }
+  }
+  &_text {
+    font-family: "Aleo";
+    @include font-title;
+    text-align: center;
+    color: $gray;
+    display: inline-block;
+    line-height: 0.9;
+    transition: 1s ease-in-out;
+    &:hover {
+      color: gold;
+    }
+    @media screen and (max-width: $tablet) {
+      font-size: 26px;
+    }
+    @media screen and (max-width: $mobile) {
+      font-size: 17px;
+    }
+  }
+}
+.icon_2 {
+  &:hover {
+    animation: second_color 0.5s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes first_color {
+  0% {
+    text-shadow: 0 0 10px #1877f2, 0 0 20px #1459b3, 0 0 30px #179bff;
+  }
+  100% {
+    text-shadow: 0 0 5px #1877f2, 0 0 10px #1459b3, 0 0 15px #179bff;
+  }
+}
+@keyframes second_color {
+  0% {
+    text-shadow: 0 0 10px #fc6060, 0 0 20px #e43131, 0 0 30px #ec5151;
+  }
+  100% {
+    text-shadow: 0 0 5px #fc6060, 0 0 10px #e43131, 0 0 15px #ec5151;
+  }
+}
+
+//spain
+.spain {
+  background-image: url(../image/spain/spain.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &_container {
+    padding-top: 226px;
+    padding-bottom: 99px;
+    @media screen and (max-width: $tablet) {
+      padding-top: 100px;
+    }
+  }
+  &_madrid {
+    background-color: $dark-black;
+    opacity: 0.9;
+    max-width: 543px;
+    width: 100%;
+    padding: 50px 32px;
+    @media screen and (max-width: $desctop) {
+      margin: 0 auto;
+    }
+  }
+  &_title {
+    font-family: "Josefin Sans";
+    @include font-subtitle;
+    letter-spacing: 1.5px;
+    color: $gray;
+    margin-bottom: 23px;
+  }
+  &_subtitle {
+    text-transform: uppercase;
+    color: $white;
+    margin-bottom: 13px;
+  }
+  &_text {
+    font-family: "Josefin Sans";
+    @include font-text;
+    color: $gray;
+    margin-bottom: 46px;
+  }
+}
+.spain_second {
+  background-image: url(../image/spain/madrid.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.spain_madrid__second {
+  margin-left: auto;
+}
+
+//tourist
+.tourist {
+  background-image: url(../image/tourist/background.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &_container {
+    padding-top: 128px;
+    padding-bottom: 200px;
+    margin: 0 auto;
+    @media screen and (max-width: $tablet) {
+      padding-top: 50px;
+      padding-bottom: 110px;
+    }
+  }
+  &_title {
+    font-family: "Aleo";
+    @include font-title;
+    text-align: center;
+    color: $white;
+    margin-bottom: 91px;
+    @media screen and (max-width: $desctop) {
+      margin: 35px;
+    }
+  }
+  &_content {
+    display: flex;
+    @media screen and (max-width: $desctop) {
+      flex-direction: column;
+    }
+  }
+  &_img {
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+    @media screen and (max-width: $desctop) {
+      max-width: 668px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+  &_block {
+    max-width: 668px;
+    padding: 49px 25px 39px 62px;
+    background-color: $black;
+    @media screen and (max-width: $desctop) {
+      margin: 0 auto;
+    }
+    &__title {
+      font-family: "Josefin Sans";
+      @include font-subtitle;
+      text-transform: uppercase;
+      color: $hex-white;
+      margin-bottom: 8px;
+    }
+    &__text {
+      font-family: "Josefin Sans";
+      @include font-text;
+      color: $gray;
+      &::before {
+        content: "\f10d";
+        color: $blue;
+        font-family: "FontAwesome";
+        @include font-title;
+      }
+    }
+  }
+}
+//footer
+.footer {
+  background-color: $dark-black;
+  &_container {
+    padding-top: 122px;
+    padding-bottom: 47px;
+    @media screen and (max-width: $tablet) {
+      padding-top: 50px;
+    }
+  }
+  &_logo {
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 8px;
+  }
+  &_subtitle {
+    font-family: "Josefin Sans";
+    @include font-text;
+    text-align: center;
+    letter-spacing: 1.6px;
+    color: $white;
+    margin-bottom: 16px;
+  }
+  &_nav {
+    max-width: 166px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  &_list {
+    display: flex;
+    justify-content: space-between;
+  }
+  &_link {
+    font-family: "FontAwesome";
+    @include font-text;
+    text-align: center;
+    letter-spacing: 1.6px;
+  }
+  &_icon {
+    font-family: "FontAwesome";
+    @include font-subtitle;
+    letter-spacing: 1.6px;
+    color: $gray;
+    transition: all 1s ease-in;
+    &:hover {
+      color: gold;
+    }
+  }
+}

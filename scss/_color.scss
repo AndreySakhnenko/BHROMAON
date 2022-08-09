@@ -1,0 +1,25 @@
+$white: #ffffff;
+$gray: #E8E8E8;
+$hex-white:#FEFEFE;
+$hex-blue: #496bfe;
+$blue: #5474FD;
+$aqua: #00A2FF;
+$hex-gray: #999999;
+$black: #333333;
+$dark-black: #232323;
+$red: #FF6363;
+@mixin font-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+@mixin font-title {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 0.7;
+}
+@mixin font-subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.3;
+}
